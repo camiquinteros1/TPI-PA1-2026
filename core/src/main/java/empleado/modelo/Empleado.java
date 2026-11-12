@@ -1,6 +1,7 @@
 package empleado.modelo;
 
 import empleado.exception.CampoObligatorioException;
+import empleado.exception.FechaIngresoFuturaException;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -62,6 +63,11 @@ public class Empleado {
         if (puesto == null) {
             throw new CampoObligatorioException("El puesto no puede ser nulo.");
         }
+
+        if (fechaIngreso.isAfter(LocalDate.now())) {
+            throw new FechaIngresoFuturaException("La fecha de ingreso no puede ser futura.");
+        }
+
 
         return new Empleado(nombreCompleto, legajo, fechaIngreso, puesto, salario);
     }
