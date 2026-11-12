@@ -68,6 +68,10 @@ public class Empleado {
             throw new FechaIngresoFuturaException("La fecha de ingreso no puede ser futura.");
         }
 
+        if(legajo == null || !legajo.matches("^[A-Z]{3}\\d{4}$")) {
+            throw new empleado.exception.FormatoLegajoInvalidoException("El legajo debe tener el formato de 3 letras mayúsculas seguidas de 4 dígitos.");
+        }
+
 
         return new Empleado(nombreCompleto, legajo, fechaIngreso, puesto, salario);
     }
