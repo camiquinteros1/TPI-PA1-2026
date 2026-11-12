@@ -1,5 +1,7 @@
 package empleado.modelo;
 
+import empleado.exception.CampoObligatorioException;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -47,6 +49,20 @@ public class Empleado {
     }
 
     public static Empleado crear(String nombreCompleto, String legajo, LocalDate fechaIngreso, Puesto puesto, double salario) {
+
+        if (nombreCompleto == null || nombreCompleto.isBlank()) {
+            throw new CampoObligatorioException("El nombre completo no puede ser nulo o vacío.");
+        }
+        if (legajo == null || legajo.isBlank()) {
+            throw new CampoObligatorioException("El legajo no puede ser nulo o vacío.");
+        }
+        if (fechaIngreso == null) {
+            throw new CampoObligatorioException("La fecha de ingreso no puede ser nula.");
+        }
+        if (puesto == null) {
+            throw new CampoObligatorioException("El puesto no puede ser nulo.");
+        }
+
         return new Empleado(nombreCompleto, legajo, fechaIngreso, puesto, salario);
     }
 
