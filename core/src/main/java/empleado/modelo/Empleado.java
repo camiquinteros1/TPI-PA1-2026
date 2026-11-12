@@ -75,6 +75,10 @@ public class Empleado {
             throw new SalarioInvalidoException("El salario debe ser mayor a cero.");
         }
 
+        if (salario < puesto.getSalarioMinimo()) {
+            throw new SalarioInferiorAlPisoException("El salario no puede ser menor al salario mínimo del puesto.");
+        }
+
         
 
 
