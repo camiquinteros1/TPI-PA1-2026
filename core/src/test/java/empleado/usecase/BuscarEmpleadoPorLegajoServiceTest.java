@@ -1,10 +1,13 @@
 package empleado.usecase;
 
 import empleado.exception.EmpleadoNoEncontradoException;
+import empleado.modelo.Empleado;
+import empleado.modelo.Puesto;
 import empleado.output.EmpleadoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,5 +39,19 @@ public class BuscarEmpleadoPorLegajoServiceTest {
         verify(repositorio).buscarPorLegajo(legajo);
 
     }
+
+    @Test
+    public void buscarEmpleadoPorLegajoExistente() {
+
+        Empleado empleado = Empleado.crear("John Doe", legajo, LocalDate.of(2020, 1, 1), Puesto.ANALISTA, 600000);
+
+        when(repositorio.buscarPorLegajo(legajo)).thenReturn(Optional.of(empleado));
+
+        Empleado resultado = servicio.buscarPorLegajo(legajo);
+        assertSame(empleado, resultado);
+
+        verify(repositorio).buscarPorLegajo(legajo);
+    }
+
 
 }
