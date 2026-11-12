@@ -1,7 +1,6 @@
 package empleado.modelo;
 
-import empleado.exception.CampoObligatorioException;
-import empleado.exception.FechaIngresoFuturaException;
+import empleado.exception.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -71,6 +70,12 @@ public class Empleado {
         if(legajo == null || !legajo.matches("^[A-Z]{3}\\d{4}$")) {
             throw new empleado.exception.FormatoLegajoInvalidoException("El legajo debe tener el formato de 3 letras mayúsculas seguidas de 4 dígitos.");
         }
+
+        if (salario <=0) {
+            throw new SalarioInvalidoException("El salario debe ser mayor a cero.");
+        }
+
+        
 
 
         return new Empleado(nombreCompleto, legajo, fechaIngreso, puesto, salario);
