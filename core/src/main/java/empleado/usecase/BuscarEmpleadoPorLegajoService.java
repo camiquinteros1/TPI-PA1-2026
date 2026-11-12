@@ -2,6 +2,7 @@ package empleado.usecase;
 
 import empleado.modelo.Empleado;
 import empleado.output.EmpleadoRepository;
+import empleado.exception.*;
 
 public class BuscarEmpleadoPorLegajoService {
 
@@ -12,7 +13,11 @@ public class BuscarEmpleadoPorLegajoService {
     }
 
     public Empleado buscarPorLegajo(String legajo) {
-        throw new UnsupportedOperationException();
+
+        return repositorio.buscarPorLegajo(legajo)
+                .orElseThrow(() -> new EmpleadoNoEncontradoException(
+                        "No se encontró un empleado con el legajo " + legajo));
+
     }
 
 }
