@@ -3,6 +3,7 @@ package empleado.modelo;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import empleado.exception.*;
@@ -364,4 +365,18 @@ public class EmpleadoTest {
         assertEquals(salario, empleado.getSalario(), 0.001);
     }
 
+    @Test
+    public void reconstruirEmpleadoConservaElId() {
+
+        UUID id = UUID.randomUUID();
+
+        Empleado empleado = Empleado.reconstruir(
+                id, "John Doe", "ABC1234", LocalDate.of(2020, 1, 1), Puesto.ANALISTA, 600000);
+
+        assertEquals(id, empleado.getId());
+        assertEquals("John Doe", empleado.getNombreCompleto());
+        assertEquals("ABC1234", empleado.getLegajo());
+        assertEquals(Puesto.ANALISTA, empleado.getPuesto());
+        assertEquals(600000, empleado.getSalario(), 0.001);
+    }
 }

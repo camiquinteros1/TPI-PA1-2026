@@ -79,10 +79,15 @@ public class Empleado {
             throw new SalarioInferiorAlPisoException("El salario no puede ser menor al salario mínimo del puesto.");
         }
 
-        
+
 
 
         return new Empleado(nombreCompleto, legajo, fechaIngreso, puesto, salario);
+    }
+
+    public static Empleado reconstruir(UUID id, String nombreCompleto, String legajo,
+                                       LocalDate fechaIngreso, Puesto puesto, double salario) {
+        throw new UnsupportedOperationException();
     }
 
 }
