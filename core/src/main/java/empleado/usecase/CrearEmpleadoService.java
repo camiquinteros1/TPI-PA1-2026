@@ -2,10 +2,11 @@ package empleado.usecase;
 
 import empleado.exception.LegajoDuplicadoException;
 import empleado.input.CrearEmpleadoCommand;
+import empleado.input.CrearEmpleadoUseCase;
 import empleado.modelo.Empleado;
 import empleado.output.EmpleadoRepository;
 
-public class CrearEmpleadoService {
+public class CrearEmpleadoService implements CrearEmpleadoUseCase {
 
     private final EmpleadoRepository repositorio;
 
@@ -13,6 +14,7 @@ public class CrearEmpleadoService {
         this.repositorio = repositorio;
     }
 
+    @Override
     public Empleado crear(CrearEmpleadoCommand comando) {
 
         Empleado empleado = Empleado.crear(

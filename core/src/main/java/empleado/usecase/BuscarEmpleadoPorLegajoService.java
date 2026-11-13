@@ -1,10 +1,11 @@
 package empleado.usecase;
 
+import empleado.input.BuscarEmpleadoPorLegajoUseCase;
 import empleado.modelo.Empleado;
 import empleado.output.EmpleadoRepository;
 import empleado.exception.*;
 
-public class BuscarEmpleadoPorLegajoService {
+public class BuscarEmpleadoPorLegajoService implements BuscarEmpleadoPorLegajoUseCase {
 
     private final EmpleadoRepository repositorio;
 
@@ -12,6 +13,7 @@ public class BuscarEmpleadoPorLegajoService {
         this.repositorio = repositorio;
     }
 
+    @Override
     public Empleado buscarPorLegajo(String legajo) {
 
         return repositorio.buscarPorLegajo(legajo)
