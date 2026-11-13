@@ -14,8 +14,8 @@ public class Empleado {
     private Puesto puesto;
     private double salario;
 
-    private Empleado(String nombreCompleto, String legajo, LocalDate fechaIngreso, Puesto puesto, double salario) {
-        this.id = UUID.randomUUID();
+    private Empleado(UUID id, String nombreCompleto, String legajo, LocalDate fechaIngreso, Puesto puesto, double salario) {
+        this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.legajo = legajo;
         this.fechaIngreso = fechaIngreso;
@@ -81,13 +81,13 @@ public class Empleado {
 
 
 
-
-        return new Empleado(nombreCompleto, legajo, fechaIngreso, puesto, salario);
+        return new Empleado(UUID.randomUUID(), nombreCompleto, legajo, fechaIngreso, puesto, salario);
     }
+
 
     public static Empleado reconstruir(UUID id, String nombreCompleto, String legajo,
                                        LocalDate fechaIngreso, Puesto puesto, double salario) {
-        throw new UnsupportedOperationException();
+        return new Empleado(id, nombreCompleto, legajo, fechaIngreso, puesto, salario);
     }
 
 }
