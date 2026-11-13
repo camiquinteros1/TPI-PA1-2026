@@ -14,7 +14,7 @@ public class ListarEmpleadosService {
     }
 
     public List<Empleado> listar() {
-        throw new UnsupportedOperationException();
+        return repositorio.listarTodos();
     }
 
 }
