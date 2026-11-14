@@ -1,0 +1,79 @@
+### Crear empleado
+POST http://localhost:8080/empleados
+Content-Type: application/json
+
+{
+  "nombreCompleto": "Juan Perez",
+  "legajo": "ABC1234",
+  "fechaIngreso": "2025-05-10",
+  "puesto": "ANALISTA",
+  "salario": 500000
+}
+
+### Buscar empleado por legajo
+GET http://localhost:8080/empleados/ABC1234
+
+### Listar todos los empleados
+GET http://localhost:8080/empleados
+
+### Intentar crear empleado con legajo duplicado
+POST http://localhost:8080/empleados
+Content-Type: application/json
+
+{
+  "nombreCompleto": "Maria Lopez",
+  "legajo": "ABC1234",
+  "fechaIngreso": "2025-06-15",
+  "puesto": "ANALISTA",
+  "salario": 500000
+}
+
+### Buscar empleado inexistente
+GET http://localhost:8080/empleados/XYZ9999
+
+### Crear empleado con salario inferior al minimo
+POST http://localhost:8080/empleados
+Content-Type: application/json
+
+{
+  "nombreCompleto": "Pedro Gomez",
+  "legajo": "DEF5678",
+  "fechaIngreso": "2025-05-10",
+  "puesto": "ANALISTA",
+  "salario": 300000
+}
+
+### Crear empleado con formato de legajo invalido
+POST http://localhost:8080/empleados
+Content-Type: application/json
+
+{
+  "nombreCompleto": "Pedro Gomez",
+  "legajo": "abc123",
+  "fechaIngreso": "2025-05-10",
+  "puesto": "ANALISTA",
+  "salario": 500000
+}
+
+### Crear empleado con fecha de ingreso futura
+POST http://localhost:8080/empleados
+Content-Type: application/json
+
+{
+  "nombreCompleto": "Pedro Gomez",
+  "legajo": "GHI1234",
+  "fechaIngreso": "2030-05-10",
+  "puesto": "ANALISTA",
+  "salario": 500000
+}
+
+### Crear empleado sin nombre completo
+POST http://localhost:8080/empleados
+Content-Type: application/json
+
+{
+  "legajo": "JKL1234",
+  "fechaIngreso": "2025-05-10",
+  "puesto": "ANALISTA",
+  "salario": 500000
+}
